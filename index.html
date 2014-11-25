@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <title>My Ratchet & AngularJS App</title>
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="scripts/ratchet/dist/css/ratchet.css" />
+
+    <link rel="stylesheet" href="scripts/ratchet/dist/css/ratchet-theme-android.css" />
+
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+    <!-- Make sure all your bars are the first things in your <body> -->
+    <header class="bar bar-nav">
+        <h1 class="title">Ratchet & AngularJS App</h1>
+    </header>
+
+
+    <div class="content" ng-view></div> 
+
+    <nav class="bar bar-tab">
+        <a class="tab-item" href="#/">
+            <div>Ratchet-Angular seed2 app: v<span app-version></span></div>
+        </a>
+    </nav>
+
+    <!-- Cordova reference, this is added to your app when it's built. -->
+    <script src="cordova.js"></script>
+    <script src="scripts/platformOverrides.js"></script>
+
+    
+    <script src="scripts/angular/angular.js"></script>
+    <script src="scripts/angular-route/angular-route.js"></script>
+
+    <!--<script src="scripts/ratchet/dist/js/ratchet.js"></script>-->
+
+    <script src="scripts/index.js"></script>
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services.js"></script>
+    <script src="scripts/controllers.js"></script>
+    <script src="scripts/filters.js"></script>
+    <script src="scripts/directives.js"></script>
+
+   
+</body>
+</html>
