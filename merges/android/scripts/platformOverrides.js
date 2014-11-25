@@ -7,4 +7,9 @@
     } else {
         document.head.appendChild(scriptElem);
     }
+
+    var ratchetElem = document.createElement('link');
+    ratchetElem.setAttribute('href', 'scripts/ratchet/dist/css/ratchet-theme-android.css');
+    ratchetElem.setAttribute('rel', 'stylesheet');
+    document.head.appendChild(ratchetElem);
 }());

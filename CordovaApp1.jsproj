@@ -111,6 +111,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="css\app.css" />
+    <Content Include="merges\ios\scripts\platformOverrides.js" />
     <Content Include="partials\partial1.html" />
     <Content Include="partials\partial2.html" />
     <Content Include="plugins\org.apache.cordova.dialogs\.fetch.json" />
@@ -181,7 +182,6 @@
     <Folder Include="images\" />
     <Content Include="merges\android\scripts\android2.3-jscompat.js" />
     <Content Include="merges\android\scripts\platformOverrides.js" />
-    <Folder Include="merges\ios\" />
     <Content Include="merges\windows\scripts\platformOverrides.js" />
     <Content Include="merges\windows\scripts\winstore-jscompat.js" />
     <Folder Include="merges\wp8\" />
