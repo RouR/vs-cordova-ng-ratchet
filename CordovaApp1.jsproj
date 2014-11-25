@@ -114,6 +114,7 @@
     <Content Include="merges\ios\scripts\platformOverrides.js" />
     <Content Include="partials\partial1.html" />
     <Content Include="partials\partial2.html" />
+    <Content Include="partials\partial4.html" />
     <Content Include="partials\partial3.html" />
     <Content Include="plugins\org.apache.cordova.dialogs\.fetch.json" />
     <Content Include="plugins\org.apache.cordova.dialogs\CONTRIBUTING.md" />

@@ -1,0 +1,14 @@
+<p>This is the partial for view 4.</p>
+
+<div>
+    <input type="text" ng-model="search.$" style="width:100%; padding:10px;">
+    <div style="padding:10px;">
+        <table style="width:100%;">
+            <tr ng-repeat="performance in performances | filter:search">
+                <td>{{performance.title}}</td>
+                <td>{{performance.club}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
