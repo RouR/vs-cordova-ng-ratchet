@@ -15,6 +15,7 @@
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
         angular.bootstrap(document, ["myApp"]);
 
+        showAlert();
     };
 
     function onPause() {
@@ -24,4 +25,21 @@
     function onResume() {
         // TODO: This application has been reactivated. Restore application state here.
     };
+
+
+
+
+    function alertDismissedCallback() {
+        // do something
+    }
+    // Show a custom alert
+    //
+    function showAlert() {
+        navigator.notification.alert(
+            'Started! (debug message)',  // message
+            alertDismissedCallback,         // callback
+            'Hello title',            // title
+            'Done'                  // buttonName
+        );
+    }
 } )();
