@@ -15,5 +15,6 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/view3', { templateUrl: 'partials/partial3.html', controller: 'NotificationCtrl' });
   $routeProvider.when('/view4', { templateUrl: 'partials/partial4.html', controller: 'testData1Ctrl' });
   $routeProvider.when('/view5', { templateUrl: 'partials/partial4.html', controller: 'testData2Ctrl' });
+  $routeProvider.when('/settings', { templateUrl: 'partials/settings.html', controller: 'settingsCtrl' });
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);

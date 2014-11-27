@@ -1,0 +1,19 @@
+<p>Settings</p>
+
+<div>
+    Color (null allowed):
+    <span class="nullable">
+        <select ng-model="myColor"
+                ng-options="color.name for color in colors"
+                ng-change="selectChange(myColor)">
+            <option value="">-- choose color --</option>
+        </select>
+    </span>
+    
+    <hr />
+    Currently selected: {{ {selected_color:myColor} }}
+    <div style="border:solid 1px black; height:20px"
+         ng-style="{'background-color':myColor.name}">
+    </div>
+</div>
+

@@ -51,4 +51,36 @@ angular.module('myApp.controllers', [])
         NotificationService.alert("AJAX fail", function () {}, "Alert", "Close");
     });
 }])
+.controller('settingsCtrl', ['$scope', 'StorageService', function ($scope, StorageService) {
+    console.log('settingsCtrl ');
+
+    $scope.colors = [
+      { name: 'black', shade: 'dark' },
+      { name: 'white', shade: 'light' },
+      { name: 'red', shade: 'dark' },
+      { name: 'blue', shade: 'dark' },
+      { name: 'yellow', shade: 'light' }
+    ];
+
+
+    var stored = JSON.parse(StorageService.get('n1'));
+    if (stored != null) {
+        for (var i = 0; i < $scope.colors.length; i++) 
+            if ($scope.colors[i].name === stored.name) {
+                $scope.myColor = $scope.colors[i];
+                break;
+        }
+    }
+    else
+        $scope.myColor = $scope.colors[2];
+
+    
+
+    $scope.selectChange = function (value) {
+        if (value == null) {
+            return;
+        }
+        StorageService.set('n1', JSON.stringify(value));
+    }
+}])
 ;

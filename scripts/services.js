@@ -38,4 +38,17 @@ angular.module('myApp.services', [])
         }
     };
 })
+.factory('StorageService', function () {
+    return {
+        set: function (name, value) {
+            window.localStorage.setItem(name, value);
+        },
+        get: function (name) {
+            return window.localStorage.getItem(name);
+        },
+        del: function(name) {
+            window.localStorage.removeItem(name);
+        }
+    };
+});
 ;
