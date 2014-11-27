@@ -15,7 +15,7 @@
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
         angular.bootstrap(document, ["myApp"]);
 
-        showAlert();
+        //showAlert();
     };
 
     function onPause() {
@@ -42,4 +42,4 @@
             'Done'                  // buttonName
         );
     }
-} )();
+})();

@@ -11,34 +11,55 @@
     <link rel="stylesheet" href="scripts/ratchet/dist/css/ratchet.css" />
 
     <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="scripts/angular-snap/angular-snap.css"/>
 
     <!-- scripts/ratchet/dist/css/ratchet-theme-android.css" added in merges/.../platformOverrides.js -->
 </head>
 <body>
-    <!-- Make sure all your bars are the first things in your <body> -->
-    <header class="bar bar-nav">
-        <h1 class="title">Ratchet & AngularJS App</h1>
-    </header>
 
+    <div>
+        <snap-drawer>
+            <!--<p>Hello from navi menu!</p>
+            <button snap-close><span class="icon icon-close"></span></button>-->
 
-    <div class="content" ng-view></div> 
+            <ul class="table-view">
+                <li class="table-view-cell">Snap.js</li>
+                <li class="table-view-divider">Divider</li>
+                <li class="table-view-cell"  ng-repeat="j in [0, 1, 2, 3, 4]">
+                    <a class="navigate-right" href="#/demo{{j}}.html" snap-close>
+                        demo{{j}}
+                    </a>
+                </li>
+            </ul>
 
-    <nav class="bar bar-tab">
-        <a class="tab-item" href="#/">
-            <div>Ratchet-Angular seed2 app: v<span app-version></span></div>
-        </a>
-    </nav>
+        </snap-drawer>
+        <snap-content>
+            <header class="bar bar-nav">
+                <a class="icon icon-bars pull-left" snap-toggle=""></a>
+                <a class="icon icon-gear pull-right"></a>
+                <h1 class="title"><a href="#/">Ratchet & AngularJS App</a></h1>
+            </header>
 
-    <!-- Cordova reference, this is added to your app when it's built. -->
+            <div class="content">
+                <div snap-dragger ng-view></div>
+            </div>
+        </snap-content>
+    </div>
+
+   
+
+<!-- Cordova reference, this is added to your app when it's built. -->
     <script src="cordova.js"></script>
     <script src="scripts/platformOverrides.js"></script>
 
-    
+    <script src="scripts/snapjs/snap.js"></script>
     <script src="scripts/angular/angular.js"></script>
     <script src="scripts/angular-route/angular-route.js"></script>
+    <script src="scripts/angular-snap/angular-snap.js"></script>
 
     <!--<script src="scripts/ratchet/dist/js/ratchet.js"></script>-->
 
+    
     <script src="scripts/index.js"></script>
 
     <script src="scripts/app.js"></script>
