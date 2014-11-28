@@ -38,18 +38,32 @@ angular.module('myApp.controllers', [])
 		{ "title": "Bees", "club": "LDF" },
 		{ "title": "Mushrooms", "club": "Dance Act" }
     ];
+    
+    $scope.onRefresh = function($scope) {
+        console.log('onRefresh');
+        $scope.performances = [
+		    { "title": "refreshed local", "club": "Magic" },
+            { "title": "Dolphins local", "club": "Mystika" },
+		    { "title": "Bees", "club": "LDF" },
+		    { "title": "Mushrooms", "club": "Dance Act" }
+        ];
+    };
 }])
-.controller('testData2Ctrl', ['$scope', 'NotificationService', '$http', function ($scope, NotificationService, $http) {    
-    $scope.performances = [];
+.controller('testData2Ctrl', ['$scope', 'NotificationService', '$http', 'refresher', function ($scope, NotificationService, $http, refresher) {
+    $scope.performances = [{ "title": "inital data", "club": "fast" }];
 
-    //Ripple emulator: Expand the Settings panel, Set option for the Cross Origin Proxy = Remote
-    var responsePromise = $http({ method: 'GET', url: 'http://pastebin.com/raw.php?i=WV9znMFU' });
-    responsePromise.success(function (data, status, headers, config) {
-        $scope.performances = data;
-    });
-    responsePromise.error(function (data, status, headers, config) {
-        NotificationService.alert("AJAX fail", function () {}, "Alert", "Close");
-    });
+    $scope.onRefresh = function ($scope) {
+        console.log('onRefresh');
+        //Ripple emulator: Expand the Settings panel, Set option for the Cross Origin Proxy = Remote
+        var responsePromise = $http({ method: 'GET', url: 'http://pastebin.com/raw.php?i=WV9znMFU' });
+        responsePromise.success(function (data, status, headers, config) {
+            $scope.performances = data;
+        });
+        responsePromise.error(function (data, status, headers, config) {
+            NotificationService.alert("AJAX fail", function () { }, "Alert", "Close");
+        });
+    };
+
 }])
 .controller('settingsCtrl', ['$scope', 'StorageService', function ($scope, StorageService) {
     console.log('settingsCtrl ');

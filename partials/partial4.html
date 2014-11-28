@@ -2,7 +2,11 @@
 
 <div>
     <input type="text" ng-model="search.$" style="width:100%; padding:10px;">
-    <div style="padding:10px;">
+    <div style="padding:10px;"
+         myrefresher
+         refresher-url=""
+         refresher-items="performances"
+         refresher-timer="300">
         <table style="width:100%;">
             <tr ng-repeat="performance in performances | filter:search">
                 <td>{{performance.title}}</td>
