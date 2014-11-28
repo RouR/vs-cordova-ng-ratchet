@@ -3,7 +3,7 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('myApp', [
-  'ngRoute', 'snap', 'refresher',
+  'ngRoute', 'snap', 'refresher', 'ngProgress',
   'myApp.filters',
   'myApp.services',
   'myApp.directives',
@@ -20,10 +20,9 @@ config(['$routeProvider', function($routeProvider) {
 }])
 .config(["$provide", function ($provide) {
     
-    $provide.decorator('refresher', ["$delegate", '$q', function ($delegate, $q) {
+    $provide.decorator('refresher', ["$delegate", '$q', 'ngProgress', function ($delegate, $q, ngProgress) {
         // Save the original refresher.get()
         var origFnGet = $delegate.get;
-
         $delegate.get = function (url) {
             console.log('get from decorator');
             var q = $q.defer();
@@ -37,12 +36,12 @@ config(['$routeProvider', function($routeProvider) {
         };
 
         var origFnRquest = $delegate.request;
-
         $delegate.request = function (attr, scope) {
             console.log('request from decorator');
             var args = [].slice.call(arguments);
 
             console.log('decorator scope', scope.testmsg);
+            ngProgress.start();
             if (scope.onRefresh != undefined) {
                 scope.onRefresh(scope);
             }
@@ -52,8 +51,7 @@ config(['$routeProvider', function($routeProvider) {
         };
 
         var origFnrender = $delegate.render;
-
-        $delegate.render = function (attr, scope) {
+        $delegate.render = function (attr, scope, elem) {
             console.log('render from decorator');
             var args = [].slice.call(arguments);
 
@@ -62,13 +60,34 @@ config(['$routeProvider', function($routeProvider) {
         };
 
         var origFnremove = $delegate.remove;
-
-        $delegate.remove = function (attr, scope) {
+        $delegate.remove = function () {
             console.log('remove from decorator');
             var args = [].slice.call(arguments);
 
+            ngProgress.complete();
+
             // Call the original with the output prepended with formatted timestamp
             origFnremove.apply(this, args);
+        };
+
+        var origFntstartPull = $delegate.startPull;
+        $delegate.startPull = function (ev, attr, scope, elem) {
+            console.log('startPull from decorator');
+            var args = [].slice.call(arguments);
+
+            // Call the original with the output prepended with formatted timestamp
+            origFntstartPull.apply(this, args);
+        };
+
+        var origFntranslateY = $delegate.translateY;
+        $delegate.translateY = function (target, y) {
+            console.log('translateY from decorator');
+            var args = [].slice.call(arguments);
+
+            ngProgress.set(y);
+
+            // Call the original with the output prepended with formatted timestamp
+            origFntranslateY.apply(this, args);
         };
 
         return $delegate;
